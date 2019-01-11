@@ -24,7 +24,7 @@ public class AK{{ class }}AudioUnit: AKGeneratorAudioUnitBase {
 
     {% for item in rampedParameters + simpleParameters %}
     var {{ item[0] }}: Double = {{ item[1] }} {
-        didSet { setParameter(.{{ item[0] }}, value: {{ item[0] }}) }}
+        didSet { setParameter(.{{ item[0] }}, value: {{ item[0] }}) }
     }
 
     {% endfor %}
@@ -75,7 +75,7 @@ public class AK{{ class }}AudioUnit: AKGeneratorAudioUnitBase {
             ]))
 
         {% for item in rampedParameters + simpleParameters %}
-        {{ item[0] }}Parameter = {{ item[1] }}
+        {{ item[0] }}Parameter.value = {{ item[1] }}
         {% endfor %}
     }
 
