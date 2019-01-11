@@ -26,7 +26,7 @@ public class AK{{ class }}AudioUnit: AKGeneratorAudioUnitBase {
     var {{ item[0] }}: Double = {{ item[1] }} {
         didSet { setParameter(.{{ item[0] }}, value: {{ item[0] }}) }}
     }
-    
+
     {% endfor %}
     public override func initDSP(withSampleRate sampleRate: Double,
                                  channelCount count: AVAudioChannelCount) -> AKDSPRef {
@@ -40,7 +40,7 @@ public class AK{{ class }}AudioUnit: AKGeneratorAudioUnitBase {
         let nonRampFlags: AudioUnitParameterOptions = [.flag_IsReadable, .flag_IsWritable]
 
         var parameterAddress: AUParameterAddress = 0
-        
+
         {% for item in rampedParameters %}
         let {{ item[0] }}Parameter = AUParameter(
             identifier: "{{ item[0] }}",
@@ -51,10 +51,10 @@ public class AK{{ class }}AudioUnit: AKGeneratorAudioUnitBase {
             flags: .default)            // TODO: fix flags
 
         parameterAddress += 1
-        
+
         {% endfor %}
         {% for item in simpleParameters %}
-        let {{ item }}Parameter = AUParameter(
+        let {{ item[0] }}Parameter = AUParameter(
             identifier: "{{ item[0] }}",
             name: "{{ item[0] }}",         // TODO: fix human-readable parameter name
             address: parameterAddress,
@@ -63,7 +63,7 @@ public class AK{{ class }}AudioUnit: AKGeneratorAudioUnitBase {
             flags: nonRampFlags)        // TODO: fix flags
 
         parameterAddress += 1
-        
+
         {% endfor %}
         setParameterTree(AUParameterTree(children: [
             {% for item in rampedParameters %}
@@ -75,7 +75,7 @@ public class AK{{ class }}AudioUnit: AKGeneratorAudioUnitBase {
             ]))
 
         {% for item in rampedParameters + simpleParameters %}
-        {{ item[0] }}Parameter = {{ item[1] }};
+        {{ item[0] }}Parameter = {{ item[1] }}
         {% endfor %}
     }
 

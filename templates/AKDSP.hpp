@@ -45,7 +45,7 @@ struct AK{{ class }}DSP : AKDSPBase, {{ baseClass }}
 {
     // ramped parameters
     {% for item in rampedParameters %}
-    AKLinearParameterRamp {{ item[0] }}Ramp,
+    AKLinearParameterRamp {{ item[0] }}Ramp;
     {% endfor %}
     
     AK{{ class }}DSP();

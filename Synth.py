@@ -19,9 +19,9 @@ vars = {
     'baseClass': 'AKCoreSynth',
     'rampedParameters': [
         ('masterVolume', 1.0, 0.0, 1.0, 'fraction'),
-        ('pitchBend', 0.0, -1000.0, 1000.0, 'semitones, signed'),
-        ('vibratoDepth', 0.0, 0.0, 1000.0, 'semitones, usually < 1.0'),
-        ('filterCutoff', 1000.0, 0.0, 1000.0, 'ratio to playback pitch, 1.0 = fundamental'),
+        ('pitchBend', 2.0, -1000.0, 1000.0, 'semitones, signed'),
+        ('vibratoDepth', 1.0, 0.0, 1000.0, 'semitones, usually < 1.0'),
+        ('filterCutoff', 4.0, 0.0, 1000.0, 'ratio to playback pitch, 1.0 = fundamental'),
         ('filterStrength', 20.0, 0.0, 1000.0, 'same units as filterCutoff; amount filter EG adds to filterCutoff'),
         ('filterResonance', 0.0, 0.0, 20.0, 'decibels'),
         ],

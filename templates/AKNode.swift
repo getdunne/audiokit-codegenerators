@@ -32,7 +32,7 @@
             internalAU?.rampDuration = newValue
         }
     }
-    
+
     {% for item in rampedParameters %}
     /// {{ item[0] }}   TODO: fix title
     @objc open dynamic var {{ item[0] }}: Double = {{ item[1] }} {
@@ -52,6 +52,7 @@
 
     {% endfor %}
     {% for item in simpleParameters %}
+    /// {{ item[0] }}   TODO: fix title
     @objc open dynamic var {{ item[0] }}: Double = {{ item[1] }} {
         willSet {
             guard {{ item[0] }} != newValue else { return }
@@ -71,8 +72,9 @@
     ///
     @objc public init(
         {% for item in rampedParameters + simpleParameters %}
-        {{ item[0] }}: Double = {{ item[2] }},
+        {{ item[0] }}: Double = {{ item[1] }},
         {% endfor %}
+        ) {
 
         {% for item in rampedParameters + simpleParameters %}
         self.{{ item[0] }} = {{ item[0] }}
@@ -102,7 +104,6 @@
         {% endfor %}
 
         token = tree.token(byAddingParameterObserver: { [weak self] _, _ in
-
             guard self != nil else {
                 AKLog("Unable to create strong reference to self")
                 return
