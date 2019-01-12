@@ -17,7 +17,7 @@ Once you've done that, run (in this directory):
 ```
 python Synth.py
 ```
-This will create four files, which collectively wrap the C++ *AKCoreSynth* class defined in *AudioKitCore/Synth/AKCoreSynth*[.hpp|.cpp], for use from in an AudioKit Swift program.
+This will create four files, which collectively wrap the C++ *AKCoreSynth* class defined in *AudioKitCore/Synth/AKCoreSynth*[.hpp|.cpp], for use in an AudioKit Swift program.
 * *AKSynthDSP.hpp*: Objective-C header, based on *templates/AKDSP.hpp*
 * *AKSynthDSP.mm*: Objective-C wrapper for *AKCoreSynth* C++ code, based on *templates/AKDSP.mm*
 * *AKSynthAudioUnit.swift*: Swift AU class, based on *templates/AKAudioUnit.swift*
