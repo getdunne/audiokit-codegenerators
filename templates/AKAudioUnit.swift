@@ -42,7 +42,7 @@ public class AK{{ class }}AudioUnit: AKGeneratorAudioUnitBase {
         var parameterAddress: AUParameterAddress = 0
 
         {% for item in rampedParameters %}
-        let {{ item[0] }}Parameter = AUParameter(
+        let {{ item[0] }}Parameter = AUParameterTree.createParameter(
             identifier: "{{ item[0] }}",
             name: "{{ item[0] }}",            // TODO: fix human-readable parameter name
             address: parameterAddress,
@@ -54,7 +54,7 @@ public class AK{{ class }}AudioUnit: AKGeneratorAudioUnitBase {
 
         {% endfor %}
         {% for item in simpleParameters %}
-        let {{ item[0] }}Parameter = AUParameter(
+        let {{ item[0] }}Parameter = AUParameterTree.createParameter(
             identifier: "{{ item[0] }}",
             name: "{{ item[0] }}",         // TODO: fix human-readable parameter name
             address: parameterAddress,
